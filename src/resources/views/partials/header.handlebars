@@ -1,0 +1,58 @@
+   <div class="top-space"></div>
+    <div id="header">
+        <a href="/" class="route-link">
+        <div class="left-wrapper">
+          <div class="left-header">
+            <img class="logo-img" src="/images/clip-arts/Logo.jpg" alt="web logo"/>
+            <span id="club-name">Anti Gravity</span>
+          </div>
+        </div>
+        </a>
+          <div class="right-wrapper" style="display: flex">
+ 
+              <div class="right-header">
+                <span class="cart-box"><img id="cart-logo" src="/images/clip-arts/cart-icon.png"/></span>
+                <span class="whish-list">XEM GIỎ HÀNG</span>
+                <span class="extend-arrow"><img id="extend-icon" src="/images/clip-arts/extend-arrow.png"/></span>
+              </div>
+              <div class="cart-container">
+        
+                <section class="total-money-container">
+                  {{!-- display ordered products --}}
+                  {{#each cart}}
+                  <div class="order-list">
+                      <img src={{this.img}}>
+                        <div class="order-infor">
+                          <span>{{this.name}}</span>
+                         
+                            <span id="order-price">{{this.price}}</span>
+
+                        <div class="order-quanti">
+                            <button>-</button>
+                            <span>{{this.quantity}}</span>
+                            <button>+</button>
+                        </div>
+                      </div>
+
+                        <div class="remove-btn">&times;</div>
+                  </div>
+                  {{/each}}
+                  {{!-----------------------------}}
+                  <div class="subTotal">
+                      <span>Tổng tiền:</span>
+                      <span id="total"></span>
+                  </div>
+
+                    <div class="checkout">
+                      <span>THANH TOÁN</span>
+                    </div>
+                    
+                </section>
+              </div>
+          </div>
+      </div>
+
+      <script>
+
+      </script>
+

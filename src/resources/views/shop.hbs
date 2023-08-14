@@ -1,0 +1,123 @@
+<section>
+
+  <div class="product-box">
+    <ul class="product-list">
+      {{#each products}}
+      <!-- Product show in here -->
+      <li class="list-box">
+
+        {{!-- Popup section --}}
+        <div class="popUp" id={{this.et}}>
+          <div class="overlay"></div>
+          <div class="content">
+            {{!-- close button --}}
+            <div class="close-btn" onclick=closePop(input)>&times;</div>
+            <div class="popUp-wrapper">
+              <img src={{this.img}} class="img" alt={{this.alt}}>
+              <div class="information">
+                {{!-- title/name --}}
+                <div class="name">
+                  <h2>{{this.name}}</h2>
+                </div>
+
+                {{!-- description --}}
+                <div class="description">
+                  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur illum itaque voluptatibus fuga
+                    voluptate. Fugiat, voluptatem ut? Blanditiis eaque esse autem, quos tempore alias consectetur illo
+                    adipisci explicabo delectus? Dicta!</p>
+                </div>
+
+                <div class="rated">
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star"></span>
+                </div>
+
+                <div class="price">
+                  <span id="$">{{format this.price}}₫</span>
+                </div>
+
+
+                <div class="amount">
+                  <button onclick="decrement()">-</button>
+                  <span id="quantity">1</span>
+                  <button onclick="increment()">+</button>
+                </div>
+
+                <div class="action">
+        
+                  <button onclick=postItem({{this.et}})>Add to cart</button>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <img class="list-images" src={{this.img}} alt={{this.alt}} />
+        <div class="list-wrapper">
+          <div class="list-info">
+            <span class="Pname">{{this.name}}</span>
+            <span class="Pprice">{{format this.price}}₫</span>
+          </div>
+        </div>
+        <div class="action-button">
+
+          <button onclick=postItem({{this.et}})>thêm vào giỏ</button>
+
+          <button id={{this.et}} onclick=openPop(this.id)>xem thêm</button>
+        </div>
+      </li>
+      {{/each}}
+    </ul>
+
+    {{#each facts}}
+    <div class="fun-fact">
+      <div class="title-container">
+        <div class="title">
+          <span>{{this.name}}</span>
+        </div>
+      </div>
+      {{!-- spacing with underline --}}
+      <div class="under-line"></div>
+
+      <div class="fun-fact-infor">
+        "{{this.information}}"
+      </div>
+    </div>
+    {{/each}}
+  </div>
+
+</section>
+
+
+<script>
+
+  //PopUp effect
+  var input;
+  function openPop(data) {
+    input = data;
+    document.getElementById(data).classList.add("active");
+  }
+
+  function closePop(input) {
+    document.getElementById(input).classList.remove("active");
+  }
+
+  //send a post method to cart
+  function postItem(et) {
+
+    var xhttp = new XMLHttpRequest();
+
+    xhttp.open("POST", `/cart?et=${et}`);
+    xhttp.send();
+    window.location.reload();
+
+  }
+
+  
+
+
+</script>

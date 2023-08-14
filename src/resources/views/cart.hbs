@@ -1,0 +1,69 @@
+<div class="order-container">
+    <form method="POST" class="payment-box">
+        <span class="sectionName">THÔNG TIN MUA HÀNG</span>
+
+        <div class="rowContainer">
+            <div class="buyerInformation">
+                <div class="info">
+                    <span class="soft">Họ và tên *</span>
+                    <input type="text">
+                </div>
+
+                <div class="info">
+                    <span class="soft">Số điện thoại *</span>
+                    <input type="text">
+                </div>
+            </div>
+        </div>
+
+        <div class="columnContainer">
+            <span class="soft">Địa chỉ nhận hàng *</span>
+            <input placeholder="Ghi rõ địa chỉ - Phường(Xã) - Quận(Huyện) - Tỉnh(Thành phố)" type="text">
+        </div>
+
+        <div class="columnContainer">
+            <span class="soft">Địa chỉ email *</span>
+            <input type="email">
+        </div>
+
+        <div class="columnContainer">
+            <div class="checkbox-section">
+                <input class="checkbox" type="checkbox">
+                <span class="checkboxName">GIAO HÀNG ĐẾN ĐỊA CHỈ KHÁC</span>
+            </div>
+        </div>
+        <input placeholder="Ghi chú đơn hàng (tùy chọn)" type="text">
+    </form>
+
+
+
+    <div class="cart-information">
+
+        <span class="sectionName">ĐƠN HÀNG</span>
+
+        <div class="order-wrapper">
+            {{#each cart}}
+
+            <div class="order-box">
+
+                <img class="order-image" src={{this.img}} alt={{this.alt}} />
+
+                <div class="order-information">
+                    <span class="name-tag">{{this.name}}</span>
+                    <span>{{format this.price}}₫</span>
+                </div>
+
+            </div>
+            {{/each}}
+        </div>
+
+        <div class="subtotal-checkout">
+            <span class="total">Tổng tiền:</span>
+            <span>{{format subTotal}}₫</span>
+        </div>
+
+        <div class="checkout">
+            <span>THANH TOÁN</span>
+        </div>
+    </div>
+</div>

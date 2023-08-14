@@ -1,0 +1,58 @@
+<div class="popUp">
+    <div class="overlay"></div>
+    <div class="content">
+        {{!-- close button --}}
+        <div class="close-btn" onclick="togglePopup()">&times;</div>
+        <div class="popUp-wrapper">
+            <img src={{this.img}} class="img" alt={{this.alt}}>
+            <div class="information">
+                {{!-- title/name --}}
+                <div class="name">
+                    <h2>{{this.name}}</h2>
+                </div>
+
+                {{!-- description --}}
+                <div class="description">
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur illum itaque voluptatibus fuga
+                        voluptate. Fugiat, voluptatem ut? Blanditiis eaque esse autem, quos tempore alias consectetur
+                        illo adipisci explicabo delectus? Dicta!</p>
+                </div>
+
+                <div class="rated">
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star"></span>
+                </div>
+
+                <div class="price">
+                    <span id="$">{{this.price}}.000₫</span>
+                </div>
+
+
+                <div class="amount">
+                    <button>-</button>
+                    <span id="quantity">1</span>
+                    <button onclick="increment()">+</button>
+                </div>
+
+                <div class="action">
+                    <button>Add to cart</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+
+    //PopUp effect
+
+
+    function togglePopup() {
+        console.log(const element = document.getElementsByClassName("popUp").classList)
+
+    }
+
+</script>

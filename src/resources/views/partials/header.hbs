@@ -1,0 +1,81 @@
+<div class="top-space"></div>
+<section id="header">
+  <a href="/" class="route-link">
+    <div class="left-wrapper">
+      <div class="left-header">
+        <img class="logo-img" src="/images/clip-arts/Logo.jpg" alt="web logo" />
+        <span id="club-name">Anti Gravity</span>
+      </div>
+    </div>
+  </a>
+  <div class="right-wrapper" style="display: flex">
+    <a href="/cart" class="route-link">
+      <div class="right-header">
+        <div class="cart-box">
+          <img id="cart-logo" src="/images/clip-arts/cart-icon.png" />
+
+          <span class="numberOfItem">
+            {{numberOfItem}}
+          </span>
+
+        </div>
+        <div class="whish-list">XEM GIỎ HÀNG</div>
+        <div class="extend-arrow"><img id="extend-icon" src="/images/clip-arts/extend-arrow.png" /></div>
+      </div>
+    </a>
+    <div class="cart-container">
+
+      <div class="total-money-container">
+        {{!-- display ordered products --}}
+        {{#each cart}}
+        <div class="order-list">
+          <img src={{this.img}}>
+          <div class="order-infor">
+            <span>{{this.name}}</span>
+
+            <span id="order-price">{{format this.price}}₫</span>
+
+            <div class="order-quanti">
+              <button>-</button>
+              <span>{{this.quantity}}</span>
+              <button>+</button>
+            </div>
+          </div>
+
+          <div class="remove-btn" onclick=deleteItem({{this.et}})>&times;</div>
+
+        </div>
+        {{/each}}
+        {{!-----------------------------}}
+
+        <div class="subTotal">
+          <span>Tổng tiền:</span>
+          <span id="total">{{format subTotal}}₫</span>
+        </div>
+
+
+        <a href="/cart" class="route-link">
+          <div class="checkout">
+            <span class="preview">XEM GIỎ HÀNG</span>
+          </div>
+        </a>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+
+  //send a delete method to cart
+  function deleteItem(et) {
+
+    var xhttp = new XMLHttpRequest();
+    xhttp.open("DELETE", `/cart?et=${et}`);
+    xhttp.send();
+    window.location.reload();
+  }
+
+
+
+</script>
