@@ -1,15 +1,24 @@
 const express = require('express');
 const morgan = require('morgan');
-const {engine} = require('express-handlebars');
+const handlebars = require('express-handlebars');
 const path = require('path');
-const app = express();
-const port = 3000;
 const route = require('./routes');
 const db = require('./config/db');
 
 
+
+
+//Helper functions
+const { currencyFormat } = require('./resources/hbs-helpers/helper');
+
+
+
 //Connect to DB
 db.connect();
+
+
+const app = express();
+const port = 3000;
 
 
 //SCSS & Static files
@@ -18,10 +27,28 @@ app.use(express.static(path.join(__dirname, 'public')));
 //HTTP logger
 app.use(morgan('combined'));
 
+
 //Template engine
-app.engine('handlebars', engine());
-app.set('view engine', 'handlebars');
-app.set('views', path.join(__dirname, 'resources' , 'views'));
+app.engine(
+  'hbs',
+  handlebars.engine({
+    //layout directory
+    layoutsDir: path.join(__dirname, 'resources', 'views', 'layouts'),
+    //partials directory
+    partialsDir: path.join(__dirname,'resources', 'views', 'partials'),
+    extname: '.hbs',
+    helpers: {
+      format: (value) => currencyFormat(value),
+      add: (value) => add(value)
+    }
+  }));
+
+
+
+app.set('view engine', 'hbs');
+app.set('views', path.join(__dirname, 'resources', 'views'));
+
+
 
 //Route init
 route(app);

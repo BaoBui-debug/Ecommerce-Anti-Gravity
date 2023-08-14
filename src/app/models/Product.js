@@ -2,9 +2,12 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const Product = new Schema({
-    name: {type: String, default:'name not found'},
-    img: {type: String, default:'image not found'},
-    price: {type: Number, default:'no price'}
-  });
+  name: { type: String, maxLength: 255 },
+  img: { type: String, maxLength: 255 },
+  alt: { type: String, maxLength: 255 },
+  price: { type: Number, maxLength: 255 },
+  quantity: { type: Number, maxLength: 255 },
+  et: {type: String, maxLength: 255}
+});
 
 module.exports = mongoose.model('Product', Product);
