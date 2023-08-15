@@ -1,28 +1,17 @@
-@charset "UTF-8";
 body {
   background-color: black;
   margin: 0;
   padding: 0; }
 
+.top-space {
+  height: 30px;
+  background-color: black; }
+
 #header {
-  height: auto;
-  width: 100%;
   background-color: white;
   display: flex;
   justify-content: space-between;
   border-bottom: 0.5px solid gainsboro; }
-
-.top-space {
-  height: 30px;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  background-color: black; }
-
-.top-most div {
-  color: white;
-  font-size: 25px;
-  padding: 2px; }
 
 .logo-img {
   height: 80px;
@@ -30,16 +19,13 @@ body {
   object-fit: cover; }
 
 #club-name {
-  width: auto;
   font-size: 20px;
   font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; }
 
 .left-header {
   width: 150px;
-  height: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center; }
 
 .left-wrapper {
@@ -48,16 +34,12 @@ body {
 
 .right-wrapper {
   position: relative;
-  max-height: auto;
   margin: 30px 100px; }
 
 .right-header {
-  position: relative;
   cursor: pointer;
   display: flex;
   align-items: center;
-  height: auto;
-  width: auto;
   border: 1px solid black;
   padding: 10px;
   transition: 0.2s; }
@@ -111,7 +93,6 @@ body {
   position: absolute;
   background-color: white;
   border: 1px solid black;
-  width: auto;
   max-height: 600px;
   top: 54px;
   right: 0;
@@ -179,7 +160,6 @@ body {
 
 .checkout {
   margin-bottom: 10px;
-  width: 100%;
   display: flex;
   justify-content: center; }
 
@@ -204,8 +184,6 @@ body {
   position: sticky;
   top: 0;
   z-index: 1;
-  width: 100%;
-  height: auto;
   background-color: whitesmoke;
   display: flex;
   margin-bottom: 20px; }
@@ -233,8 +211,6 @@ body {
   max-width: 30px;
   object-fit: cover; }
 
-/* link for image icon */
-/*  */
 .dropdown-list {
   padding: 0;
   margin: 0;
@@ -257,38 +233,43 @@ body {
 .dropdown-list li:hover {
   background-color: gainsboro; }
 
-/* ------------------------------------------- */
 .slider-wrapper {
-  position: relative;
-  max-width: 60rem;
-  margin: 0 auto; }
+  max-width: 80rem;
+  margin: 0 auto;
+  border: 20px solid white; }
 
 .slider {
   display: flex;
   aspect-ratio: 16 / 9;
-  overflow-x: auto;
+  overflow-x: hidden;
   scroll-snap-type: x mandatory;
-  scroll-behavior: smooth;
-  border-radius: 10px; }
+  scroll-behavior: smooth; }
+
+.slider::-webkit-scrollbar {
+  display: none; }
 
 .slider img {
   flex: 1 0 100%;
-  scroll-snap-align: start;
-  object-fit: cover; }
+  object-fit: cover;
+  animation: slide 16s infinite; }
 
-.slider-nav {
-  display: flex;
-  column-gap: 1rem;
-  position: absolute;
-  bottom: 1.25rem;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 1; }
-
-.slider-nav a {
-  width: 0.5rem;
-  height: 0.5rem;
-  border-radius: 50%; }
+@keyframes slide {
+  0% {
+    transform: translateX(0); }
+  25% {
+    transform: translateX(0); }
+  30% {
+    transform: translateX(-100%); }
+  50% {
+    transform: translateX(-100%); }
+  55% {
+    transform: translateX(-200%); }
+  75% {
+    transform: translateX(-200%); }
+  80% {
+    transform: translateX(-300%); }
+  100% {
+    transform: translateX(-300%); } }
 
 .route-link {
   text-decoration: none;
@@ -299,14 +280,10 @@ body {
   margin: 5rem 0; }
 
 .Anounce {
-  width: auto;
-  height: auto;
   display: flex;
   justify-content: center; }
 
 .Anounce span {
-  width: auto;
-  height: auto;
   font-size: x-large;
   background-color: red;
   color: white;
@@ -316,8 +293,7 @@ body {
   font-family: Arial, Helvetica, sans-serif; }
 
 .products-section {
-  width: 100%;
-  height: auto; }
+  width: 100%; }
 
 .products-container {
   list-style: none;
@@ -326,13 +302,10 @@ body {
   margin: 0; }
 
 .products-box {
-  width: auto;
-  height: 100%;
   margin: 0 100px;
   background-color: whitesmoke; }
 
 .products-header {
-  width: 100%;
   height: 60px; }
 
 .header-text {
@@ -344,7 +317,6 @@ body {
   margin: 10px; }
 
 .onsale-item {
-  height: auto;
   width: 300px;
   margin: 20px;
   background-color: white;
@@ -364,58 +336,33 @@ body {
   width: 100%; }
 
 .product-info {
-  position: relative;
-  height: auto;
   width: 100%;
   background-color: black;
   display: flex;
-  flex-direction: column;
-  cursor: pointer; }
+  flex-direction: column; }
 
 .product-info span {
   text-align: center;
   padding: 5px 20px;
   font-size: 25px;
-  width: auto;
-  height: auto;
   color: white; }
-
-.product-info span::after {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  padding: 20px 20px;
-  background-color: red;
-  color: White;
-  content: "THÊM VÀO GIỎ";
-  transition: transform 200ms ease-in-out;
-  transform: scaleX(0);
-  transform-origin: left; }
 
 .product-info span:hover::after {
   transform: scaleX(1); }
 
 /* end of product list */
 .ad-wrapper {
-  width: 100%;
-  height: auto; }
+  width: 100%; }
 
 .ad-box {
   margin: 0 100px;
   background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(/images/banners/woman-workout-laptop.jpg);
   height: 50rem;
-  width: auto;
   display: flex;
   flex-direction: column; }
 
-.spacer {
-  height: 20rem;
-  width: auto; }
-
 .headline-box {
-  width: auto;
+  padding-top: 20rem;
   height: 40rem;
   display: flex;
   flex-direction: column; }
@@ -428,22 +375,17 @@ body {
 
 .catcher {
   padding: 10px 30px;
-  width: auto;
   font-size: 25px;
   color: white;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
 
 .learn-more-box {
-  width: 100%;
-  height: auto;
   display: flex;
   margin: 20px 30px;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
 
 .learn-more {
   padding: 10px 30px;
-  width: auto;
-  height: auto;
   font-size: 25px;
   color: black;
   background-color: white;
@@ -457,13 +399,9 @@ body {
 
 /* end of program ad */
 .footer-wrapper {
-  margin-top: 5rem;
-  width: 100%;
-  height: auto; }
+  margin-top: 5rem; }
 
 .footer-box {
-  width: auto;
-  height: auto;
   background-color: #050505; }
 
 .footer-container {
@@ -476,8 +414,7 @@ body {
 
 .contact-wrapper {
   margin-top: 40px;
-  width: 300px;
-  height: auto; }
+  width: 300px; }
 
 .contact-text span {
   color: white;
@@ -501,8 +438,6 @@ body {
 
 .submit-button {
   position: absolute;
-  width: auto;
-  height: auto;
   top: 0;
   bottom: 0;
   right: 0;
@@ -519,8 +454,7 @@ body {
 
 .social-media-wrapper {
   margin-top: 40px;
-  width: 400px;
-  height: auto; }
+  width: 400px; }
 
 .social-media-header {
   color: white;
@@ -529,8 +463,6 @@ body {
 
 .platform-wrapper {
   padding: 0;
-  width: auto;
-  height: auto;
   display: flex;
   justify-content: center; }
 
@@ -551,10 +483,6 @@ body {
   max-height: 30px;
   object-fit: cover; }
 
-.about-us-wrapper {
-  width: auto;
-  height: auto; }
-
 .aboutlist-wrapper {
   padding: 0; }
 
@@ -568,7 +496,6 @@ body {
   cursor: pointer; }
 
 .about-us-header-wrapper {
-  width: 100%;
   text-align: start;
   margin-top: 40px; }
 
@@ -584,8 +511,6 @@ body {
   margin: 0 50px; }
 
 .product-list {
-  width: auto;
-  height: auto;
   list-style: none;
   display: flex;
   flex-wrap: wrap; }
@@ -627,13 +552,10 @@ body {
   flex-direction: column; }
 
 .fun-fact {
-  width: auto;
-  height: auto;
   margin: 46px; }
 
 .title-container {
   width: 300px;
-  height: auto;
   text-align: center; }
 
 .title {
@@ -673,7 +595,6 @@ body {
   transform: translate(-50%, -50%) scale(0);
   background: white;
   width: 800px;
-  height: auto;
   z-index: 2;
   padding: 20px;
   box-sizing: border-box; }
