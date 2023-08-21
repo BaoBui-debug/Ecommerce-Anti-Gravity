@@ -251,7 +251,9 @@ body {
 .slider img {
   flex: 1 0 100%;
   object-fit: cover;
-  animation: slide 16s infinite; }
+  animation-name: slide;
+  animation-duration: 16s;
+  animation-iteration-count: infinite; }
 
 @keyframes slide {
   0% {
@@ -546,10 +548,28 @@ body {
 .list-box:hover .action {
   visibility: visible; }
 
-.action-button {
+.action-buttons {
   position: absolute;
   display: flex;
-  flex-direction: column; }
+  flex-direction: column;
+  overflow: hidden; }
+
+.animate {
+  border: 0;
+  margin-top: 15px;
+  font-size: 15px;
+  padding: 10px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: red;
+  color: white;
+  visibility: collapse;
+  transform: translateX(-50px);
+  transition-duration: 0.2s;
+  transition-timing-function: ease-in-out; }
+
+.list-box:hover .animate {
+  transform: translateX(0);
+  visibility: visible; }
 
 .fun-fact {
   margin: 46px; }
@@ -605,7 +625,7 @@ body {
   top: 20px;
   width: 30px;
   height: 30px;
-  background: black;
+  background-color: black;
   color: white;
   font-size: 25px;
   font-weight: 600;
@@ -785,3 +805,47 @@ input {
 .subtotal-checkout .total {
   font-weight: 500;
   font-size: 25px; }
+
+.brand-container {
+  background-color: white;
+  margin: 0 50px;
+  padding: 50px; }
+
+.flex {
+  display: flex; }
+
+.flex-spaceout {
+  display: flex;
+  justify-content: space-evenly; }
+
+.justify-center {
+  display: flex;
+  justify-content: center; }
+
+.Impact-25 {
+  font-size: 25px;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; }
+
+.segoeUI-15 {
+  font-size: 15px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+
+.marginY-10 {
+  margin: 10px 0; }
+
+.brand .box {
+  height: 400px;
+  background-color: whitesmoke;
+  margin: 20px 0; }
+
+.brand img {
+  max-width: 300px;
+  object-fit: fill; }
+
+.box img {
+  max-width: 300px;
+  max-height: 300px;
+  object-fit: contain; }
+
+.checked-Evl-N {
+  color: #0082ca; }

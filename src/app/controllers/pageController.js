@@ -11,6 +11,20 @@ const { CartCount } = require('../util/utils');
 
 class SiteController {
 
+    //[POST] item to /cart
+    async postCart(req, res) {
+
+        const queryItem = await Product.findOne({ et: req.query.et });
+        const order = new Order(QueryToObject(queryItem));
+        order.save();
+    }
+
+    //[DELETE] item in /cart
+    async deleteCart(req, res) {
+        await Order.deleteOne({ et: req.query.et });
+    }
+
+
 
     //[GET] /home
     async home(req, res) {
@@ -21,14 +35,20 @@ class SiteController {
 
     }
 
-    //[GET] /shop
+    //[GET] /equipment
     async shop(req, res) {
 
         // find and render onsale product
         const rawProduct = await Product.find({});
         const rawFact = await Fact.find({});
         const orderItem = await Order.find({});
-        res.render('shop', { products: MongooseToObject(rawProduct), facts: MongooseToObject(rawFact), cart: MongooseToObject(orderItem), subTotal: GetTotal(orderItem), numberOfItem: CartCount(orderItem) });
+        res.render('equipment', { products: MongooseToObject(rawProduct), facts: MongooseToObject(rawFact), cart: MongooseToObject(orderItem), subTotal: GetTotal(orderItem), numberOfItem: CartCount(orderItem) });
+    }
+
+    //[GET] /supplement
+   async supplement(req, res) {
+        const orderItem = await Order.find({});
+        res.render('supplement', { cart: MongooseToObject(orderItem), subTotal: GetTotal(orderItem), numberOfItem: CartCount(orderItem) })
     }
 
     //[GET] /contact
@@ -44,20 +64,9 @@ class SiteController {
         res.render('cart', { cart: MongooseToObject(orderItem), subTotal: GetTotal(orderItem), numberOfItem: CartCount(orderItem) });
     }
 
-
-    //[POST] item to /cart
-    async postCart(req, res) {
-        const queryItem = await Product.findOne({ et: req.query.et });
-        const order = new Order(QueryToObject(queryItem));
-        order.save();
+    view(req, res) {
+        res.render('viewMore');
     }
-
-    //[DELETE] item in /cart
-    async deleteCart(req, res) {
-        await Order.deleteOne({ et: req.query.et });
-    }
-
-
 }
 
 module.exports = new SiteController;

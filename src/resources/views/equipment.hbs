@@ -41,13 +41,13 @@
 
 
                 <div class="amount">
-                  <button onclick="decrement()">-</button>
+                  <button>-</button>
                   <span id="quantity">1</span>
-                  <button onclick="increment()">+</button>
+                  <button>+</button>
                 </div>
 
                 <div class="action">
-        
+
                   <button onclick=postItem({{this.et}})>Add to cart</button>
 
                 </div>
@@ -63,11 +63,17 @@
             <span class="Pprice">{{format this.price}}₫</span>
           </div>
         </div>
-        <div class="action-button">
 
-          <button onclick=postItem({{this.et}})>thêm vào giỏ</button>
+        <div class="action-buttons">
 
-          <button id={{this.et}} onclick=openPop(this.id)>xem thêm</button>
+          <button class="animate" onclick=postItem({{this.et}})>
+            <i class="fa-solid fa-cart-shopping"></i>
+          </button>
+
+          <button class="animate" id={{this.et}} onclick=openPop(this.id)>
+            <i class="fa-solid fa-info"></i>
+          </button>
+          
         </div>
       </li>
       {{/each}}
@@ -110,14 +116,12 @@
   function postItem(et) {
 
     var xhttp = new XMLHttpRequest();
-
-    xhttp.open("POST", `/cart?et=${et}`);
+    xhttp.open("POST", `/cart?et=${et}`, true);
     xhttp.send();
     window.location.reload();
-
   }
 
-  
+
 
 
 </script>
