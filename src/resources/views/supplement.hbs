@@ -1,137 +1,151 @@
-<div class="brand-container">
+<div class="supplement-container">
 
-    <div class="brand EVLutionNutrition">
+    <div class="brand">
         <div class="justify-center">
             <img src="/images/banners/EVLutionNutrition-logo.png" alt="EVL logo">
         </div>
         <div class="flex-spaceout">
             {{!-- this data will later be fetch from MongoDb --}}
-            <a href="/supplement/view" class="route-link">
 
+            {{#each Evls}}
+            <a href="/supplement/view?et={{this.et}}&col=Evl" class="route-link">
                 <div class="box">
-                    <img src="/images/products/Evl-N Whey.png" alt="whey">
+                    <div class="h30-whitesmoke">
 
-                    <div class="supplement-info">
-
-                        <span class="Impact-25">100% WHEY</span>
-
-                        <div class="marginY-10">
-                            <div class="rated">
-                                <span class="fa fa-star checked-Evl-N"></span>
-                                <span class="fa fa-star checked-Evl-N"></span>
-                                <span class="fa fa-star checked-Evl-N"></span>
-                                <span class="fa fa-star checked-Evl-N"></span>
-                                <span class="fa fa-star checked-Evl-N"></span>
-
-                                <span class="segoeUI-15">(143)</span>
-                            </div>
+                        <div class="{{this.trending}} Teko-15-300 Evlution-Nutrition">
+                            trending
                         </div>
 
-                        <span class="segoeUI-15">949.000₫</span>
+                        <img src={{this.img}} alt={{this.alt}}>
+
 
                     </div>
 
+                    <div class="marginY-10">
+                        <div class="supplement-info">
+                            <span class="Teko-25">{{this.name}}</span>
+
+                            <div class="marginY-10">
+                                <div class="rated">
+                                    <span class="fa fa-star checked-Evl-N"></span>
+                                    <span class="fa fa-star checked-Evl-N"></span>
+                                    <span class="fa fa-star checked-Evl-N"></span>
+                                    <span class="fa fa-star checked-Evl-N"></span>
+                                    <span class="fa fa-star checked-Evl-N"></span>
+
+                                    <span class="Teko-25-300">({{this.rate}})</span>
+                                </div>
+                            </div>
+
+                            <span class="Teko-25-400">{{format this.price}}</span>
+                        </div>
+                    </div>
                 </div>
             </a>
-            <div class="box">
-                <img src="/images/products/Evl-N mass.png" alt="mass">
-
-                <div class="supplement-info">
-
-                    <span class="Impact-25">LEANMODE (Capsules)</span>
-
-                    <div class="marginY-10">
-                        <div class="rated">
-                            <span class="fa fa-star checked-Evl-N"></span>
-                            <span class="fa fa-star checked-Evl-N"></span>
-                            <span class="fa fa-star checked-Evl-N"></span>
-                            <span class="fa fa-star checked-Evl-N"></span>
-                            <span class="fa fa-star checked-Evl-N"></span>
-
-                            <span class="segoeUI-15">(143)</span>
-                        </div>
-                    </div>
-
-                    <span class="segoeUI-15">949.000₫</span>
-
-                </div>
-
-            </div>
-
-            <div class="box">
-                <img src="/images/products/Evl-N metabolism.png" alt="metabolism">
-
-                <div class="supplement-info">
-
-                    <span class="Impact-25">TRANS4ORM (Capsules)</span>
-
-                    <div class="marginY-10">
-                        <div class="rated">
-                            <span class="fa fa-star checked-Evl-N"></span>
-                            <span class="fa fa-star checked-Evl-N"></span>
-                            <span class="fa fa-star checked-Evl-N"></span>
-                            <span class="fa fa-star checked-Evl-N"></span>
-                            <span class="fa fa-star checked-Evl-N"></span>
-
-                            <span class="segoeUI-15">(143)</span>
-                        </div>
-                    </div>
-
-                    <span class="segoeUI-15">949.000₫</span>
-
-                </div>
-
-            </div>
-
-            <div class="box">
-                <img src="/images/products/Evl-N preworkout.png" alt="preworkout">
-
-                <div class="supplement-info">
-
-                    <span class="Impact-25">BCAA ENERGY</span>
-
-                    <div class="marginY-10">
-                        <div class="rated">
-                            <span class="fa fa-star checked-Evl-N"></span>
-                            <span class="fa fa-star checked-Evl-N"></span>
-                            <span class="fa fa-star checked-Evl-N"></span>
-                            <span class="fa fa-star checked-Evl-N"></span>
-                            <span class="fa fa-star"></span>
-
-                            <span class="segoeUI-15">(143)</span>
-                        </div>
-                    </div>
-
-                    <span class="segoeUI-15">949.000₫</span>
-
-                </div>
-
-            </div>
+            {{/each}}
 
         </div>
 
     </div>
 
-    <div class="brand MuscleTech">
+    <div class="brand">
         <div class="justify-center">
             <img src="/images/banners/MuscleTech-logo.png" alt="MuscleTech logo">
         </div>
 
-        <div class="box">
+        <div class="flex-spaceout">
+            {{!-- this data will later be fetch from MongoDb --}}
+
+            {{#each Mts}}
+            <a href="/supplement/view?et={{this.et}}&col=MT" class="route-link">
+                <div class="box">
+                    <div class="h30-whitesmoke">
+
+                        <div class="{{this.trending}} Teko-15-300 Muscle-Tech">
+                            trending
+                        </div>
+
+                        <img src={{this.img}} alt={{this.alt}}>
+
+
+                    </div>
+
+                    <div class="marginY-10">
+
+                        <div class="supplement-info">
+                            <span class="Teko-25">{{this.name}}</span>
+
+                            <div class="marginY-10">
+                                <div class="rated">
+                                    <span class="fa fa-star checked-MuscleTech"></span>
+                                    <span class="fa fa-star checked-MuscleTech"></span>
+                                    <span class="fa fa-star checked-MuscleTech"></span>
+                                    <span class="fa fa-star checked-MuscleTech"></span>
+                                    <span class="fa fa-star checked-MuscleTech"></span>
+
+                                    <span class="Teko-25-300">({{this.rate}})</span>
+                                </div>
+                            </div>
+
+                            <span class="Teko-25-400">{{format this.price}}</span>
+                        </div>
+
+                    </div>
+                </div>
+            </a>
+            {{/each}}
 
         </div>
 
     </div>
 
-    <div class="brand MUTANT">
+
+    <div class="brand">
         <div class="justify-center">
             <img src="/images/banners/MUTANT-logo.png" alt="MUTANT logo">
         </div>
 
-        <div class="box">
+        <div class="flex-spaceout">
+            {{!-- this data will later be fetch from MongoDb --}}
+
+            {{#each Mutants}}
+            <a href="/supplement/view?et={{this.et}}&col=Mtnt" class="route-link">
+                <div class="box">
+                    <div class="h30-whitesmoke">
+
+                        <div class="{{this.trending}} Teko-15-300 MUTANT">
+                            trending
+                        </div>
+
+                        <img src={{this.img}} alt={{this.alt}}>
+
+
+                    </div>
+
+                    <div class="marginY-10">
+
+                        <div class="supplement-info">
+                            <span class="Teko-25">{{this.name}}</span>
+
+                            <div class="marginY-10">
+                                <div class="rated">
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+
+                                    <span class="Teko-25-300">({{this.rate}})</span>
+                                </div>
+                            </div>
+
+                            <span class="Teko-25-400">{{format this.price}}</span>
+                        </div>
+
+                    </div>
+                </div>
+            </a>
+            {{/each}}
 
         </div>
-
     </div>
-
-</div>

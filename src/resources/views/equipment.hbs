@@ -46,11 +46,12 @@
                   <button>+</button>
                 </div>
 
-                <div class="action">
-
-                  <button onclick=postItem({{this.et}})>Add to cart</button>
-
+                <div class="marginY-10">
+                  <div class="action">
+                    <button onclick=postItem({{this.et}})>Add to cart</button>
+                  </div>
                 </div>
+
               </div>
             </div>
           </div>
@@ -73,7 +74,7 @@
           <button class="animate" id={{this.et}} onclick=openPop(this.id)>
             <i class="fa-solid fa-info"></i>
           </button>
-          
+
         </div>
       </li>
       {{/each}}

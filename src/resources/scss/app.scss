@@ -351,7 +351,7 @@ body {
 /* end of navigation section */
 
 .container {
-  margin: 5rem 0;
+  margin: 30px 0;
 }
 
 .Anounce {
@@ -820,9 +820,6 @@ background-color: whitesmoke;
   padding: 2px;
 }
 
-.action {
-  margin-top: 10px ;
-}
 .action button {
   width: 100px;
   height: 40px;
@@ -989,9 +986,9 @@ input {
   font-size: 25px;
 }
 
-//Supplement Page
 
-.brand-container {
+//Supplement Page
+.supplement-container {
   background-color: white;
   margin: 0 50px;
   padding: 50px;
@@ -1007,28 +1004,100 @@ input {
   justify-content: space-evenly;
 }
 
+.flex-spacebtwn {
+ display: flex;
+ justify-content: space-between;
+}
+
 .justify-center {
   display: flex;
   justify-content: center;
 }
 
-.Impact-25 {
-  font-size: 25px;
-  font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+
+.Teko-40-300 {
+  font-size: 40px;
+  font-family: 'Teko', sans-serif;
+  font-weight: 300;
 }
 
-.segoeUI-15 {
-  font-size: 15px;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+.Teko-15-300 {
+  font-size: 20px;
+  font-family: 'Teko', sans-serif;
+  font-weight: 300;
+}
+
+.Teko-25-300 {
+  font-size: 25px;
+  font-family: 'Teko', sans-serif;
+  font-weight: 300;
+}
+
+.Teko-25-400 {
+  font-size: 25px;
+  font-family: 'Teko', sans-serif;
+  font-weight: 400;
+}
+
+.Teko-25 {
+  font-size: 25px;
+  font-family: 'Teko', sans-serif;
+  font-weight: 700;
+}
+
+.Teko-35 {
+  font-size: 35px;
+  font-family: 'Teko', sans-serif;
+  font-weight: 400;
+}
+
+.Teko-60 {
+  font-size: 60px;
+  font-family: 'Teko', sans-serif;
+  font-weight: 700;
 }
 
 .marginY-10 {
   margin: 10px 0;
 }
-// ------------- 
-.brand .box {
-  height: 400px;
+
+.marginY-5 {
+  margin: 5px 0;
+}
+
+.background-gainboros {
+  background-color: gainsboro;
+}
+
+.h30-whitesmoke {
   background-color: whitesmoke;
+}
+
+.trending-false {
+  visibility: hidden;
+  padding: 2px 10px;
+}
+
+.trending-true {
+  padding: 2px 10px;
+  visibility: visible;
+  width: fit-content;
+}
+
+.border-15 {
+  border-radius: 25px;
+}
+
+// ------------- 
+
+.brand {
+  margin-top: 60px;
+}
+
+.brand .box {
+  max-width: 300px;
+  height: 400px;
+  padding: 10px;
   margin: 20px 0;
 }
 
@@ -1038,23 +1107,91 @@ input {
 }
 
 .box img {
-  max-width: 300px;
-  max-height: 300px;
-  object-fit: contain;
+  padding-top: 30px;
+  max-width: 250px;
+  max-height: 250px;
+  background-color: whitesmoke;
 }
 
-// .EVLutionNutrition .box {
-//   background-color: #0082ca;
-// }
+ .Evlution-Nutrition {
+   background-color: #0082ca;
+   color: white;
+ }
 
-// .MuscleTech .box {
-//   background-color: #53378b;
-// }
+ .Muscle-Tech {
+  background-color: #53378b;
+  color: white;
+ }
 
-// .MUTANT .box {
-//   background-color: black;
-// }
-
-.checked-Evl-N {
+ .MUTANT {
+  background-color: black;
+  color: white;
+ }
+  .checked-Evl-N {
   color: #0082ca;
+}
+
+   .checked-MuscleTech {
+  color: #53378b;
+}
+  .checked-Mutant {
+  color: black;
+}
+
+//View more Page
+
+.viewmore-container {
+  background-color: #efefef;
+  margin: 0 50px;
+  padding: 50px;
+}
+
+.viewmore-container .box {
+  background-color: white;
+  border-radius: 20px;
+  width: 500px;
+  padding: 20px;
+}
+
+.flex button {
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border-top: 1px solid gainsboro;
+  border-bottom: 1px solid gainsboro;
+  background-color: white;
+  transition: 0.2s ease-in-out;
+}
+
+.flex button:hover {
+  background-color: gainsboro;
+}
+
+.flex .add-btn {
+  border-radius: 0px 20px 20px 0px;
+  border-left: 0px;
+  border-right: 1px solid gainsboro;
+}
+
+.flex .subtract-btn {
+  border-radius: 20px 0px 0px 20px;
+  border-right: 0px;
+  border-left: 1px solid gainsboro;
+}
+
+.flex input {
+  max-width: 70px;
+  height: 40px;
+  text-align: center;
+  border: 1px solid gainsboro;
+  box-sizing: border-box;
+}
+
+
+.add-to-cart-btn button {
+  width: 200px;
+  height: 100%;
+  border-radius: 20px;
+  border: 1px solid #0082ca;
+  cursor: pointer;
 }

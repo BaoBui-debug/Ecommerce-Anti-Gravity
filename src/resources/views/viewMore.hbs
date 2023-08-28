@@ -1,0 +1,80 @@
+{{#with information}}
+<section class="viewmore-container flex-spaceout">
+
+    <img src={{this.img}} alt={{this.alt}}>
+
+    <div class="box">
+        <span class="Teko-60">{{this.name}}</span>
+
+        <div class="rated">
+            <span class="fa fa-star checked{{this.checked}}"></span>
+            <span class="fa fa-star checked{{this.checked}}"></span>
+            <span class="fa fa-star checked{{this.checked}}"></span>
+            <span class="fa fa-star checked{{this.checked}}"></span>
+            <span class="fa fa-star checked{{this.checked}}"></span>
+
+            <span class="Teko-25-300">({{this.rate}})</span>
+        </div>
+
+        <span class="Teko-35">{{format this.price}}</span>
+
+        <div class="marginY-10 description">
+            <span class="Teko-25-400">
+                100% Whey has 25 grams of protein with 6 grams of BCAAs included per serving
+                making it the perfect choice to boost muscle building, performance and recovery!
+            </span>
+        </div>
+
+        <div class="flex-spacebtwn">
+
+            <div class="flex">
+                <button class="Teko-25-400 subtract-btn" onclick=subtract()>-</button>
+                <input type="text" value="1" min="1" class="Teko-15-300" id="quantity"></input>
+                <button class="Teko-25-400 add-btn" onclick=add()>+</button>
+            </div>
+
+
+            <div class="add-to-cart-btn">
+                <button class="Teko-25-400 Evlution-Nutrition" onclick=postItem({{this.et}})>Add to cart</button>
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+{{/with}}
+
+<script>
+    //ADDING OR SUBTRACTING FUNCTIONS
+
+    let amount = document.getElementById("quantity");
+    function add() {
+        const num = Number(amount.value) + 1;
+        amount.value = num.toString();
+        console.log(amount.value);
+    }
+
+    function subtract() {
+        if (amount.value == "1") {
+            return amount.value
+        }
+        else {
+            const num = Number(amount.value) - 1;
+            amount.value = num.toString();
+            console.log(amount.value);
+        }
+    }
+
+    //send a post method to cart
+    function postItem(et, col) {
+
+        var xhttp = new XMLHttpRequest();
+        xhttp.open("POST", `/cart?et=${et}`, true);
+        xhttp.send();
+        window.location.reload();
+
+    }
+
+</script>
