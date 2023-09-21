@@ -13,11 +13,13 @@ module.exports = {
         }
     },
     GetTotal: function (array) {
-        var result = array.map(arr => arr.price);
-        var total = result.reduce((accumulator, currentValue) => accumulator + currentValue, 0);
+        var price = array.map(arr => arr.price * arr.quantity);
+
+        var total = price.reduce((accumulator, currentValue) => accumulator + currentValue, 0);
         return total;
     },
     CartCount: function (array) {
         return array.length;
     }
+
 }

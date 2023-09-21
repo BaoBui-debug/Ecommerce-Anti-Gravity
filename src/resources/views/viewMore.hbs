@@ -27,7 +27,7 @@
 
         <div class="flex-spacebtwn">
 
-            <div class="flex">
+            <div class="flex quanti-select">
                 <button class="Teko-25-400 subtract-btn" onclick=subtract()>-</button>
                 <input type="text" value="1" min="1" class="Teko-15-300" id="quantity"></input>
                 <button class="Teko-25-400 add-btn" onclick=add()>+</button>
@@ -35,9 +35,8 @@
 
 
             <div class="add-to-cart-btn">
-                <button class="Teko-25-400 Evlution-Nutrition" onclick=postItem({{this.et}})>Add to cart</button>
+                <button class="Teko-25-400 MUTANT" onclick=postItem({{this.et}})>Add to cart</button>
             </div>
-
 
         </div>
 
@@ -53,7 +52,6 @@
     function add() {
         const num = Number(amount.value) + 1;
         amount.value = num.toString();
-        console.log(amount.value);
     }
 
     function subtract() {
@@ -63,18 +61,17 @@
         else {
             const num = Number(amount.value) - 1;
             amount.value = num.toString();
-            console.log(amount.value);
         }
     }
-
     //send a post method to cart
-    function postItem(et, col) {
-
+    function postItem(et) {
         var xhttp = new XMLHttpRequest();
-        xhttp.open("POST", `/cart?et=${et}`, true);
+        xhttp.open("POST", `/cart?et=${et}&col={{orderCollection}}&quanti=${amount.value}`);
         xhttp.send();
-        window.location.reload();
 
+        setTimeout(function () { window.location.reload() }, 100);
     }
+
+
 
 </script>

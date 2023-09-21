@@ -12,12 +12,12 @@
           <div class="content">
             {{!-- close button --}}
             <div class="close-btn" onclick=closePop(input)>&times;</div>
-            <div class="popUp-wrapper">
-              <img src={{this.img}} class="img" alt={{this.alt}}>
+            <div class="flex">
+              <img src={{this.img}} class="addition-product" alt={{this.alt}}>
               <div class="information">
                 {{!-- title/name --}}
                 <div class="name">
-                  <h2>{{this.name}}</h2>
+                  <h2 class="Segoe-UI-20">{{this.name}}</h2>
                 </div>
 
                 {{!-- description --}}
@@ -35,21 +35,25 @@
                   <span class="fa fa-star"></span>
                 </div>
 
-                <div class="price">
-                  <span id="$">{{format this.price}}₫</span>
-                </div>
-
-
-                <div class="amount">
-                  <button>-</button>
-                  <span id="quantity">1</span>
-                  <button>+</button>
-                </div>
-
                 <div class="marginY-10">
-                  <div class="action">
-                    <button onclick=postItem({{this.et}})>Add to cart</button>
+                  <span class="Teko-35">{{format this.price}}</span>
+                </div>
+
+
+                <div class="flex-spacebtwn">
+
+                  <div class="flex quanti-select">
+                    <button class="Teko-25-400 subtract-btn" onclick=subtract()>-</button>
+                    <input type="text" value="1" min="1" class="Teko-15-300" id={{this.et}}></input>
+                    <button class="Teko-25-400 add-btn" onclick=add()>+</button>
                   </div>
+
+
+                  <div class="add-to-cart-btn">
+                    <button class="Teko-25-400 MUTANT" onclick=postAny({{this.et}})>Add to cart</button>
+                  </div>
+
+
                 </div>
 
               </div>
@@ -60,14 +64,14 @@
         <img class="list-images" src={{this.img}} alt={{this.alt}} />
         <div class="list-wrapper">
           <div class="list-info">
-            <span class="Pname">{{this.name}}</span>
-            <span class="Pprice">{{format this.price}}₫</span>
+            <span class="marginY-5 Segoe-UI-20">{{this.name}}</span>
+            <span class="marginY-5 Teko-25-400">{{format this.price}}</span>
           </div>
         </div>
 
         <div class="action-buttons">
 
-          <button class="animate" onclick=postItem({{this.et}})>
+          <button class="animate" onclick=postDefault({{this.et}})>
             <i class="fa-solid fa-cart-shopping"></i>
           </button>
 
@@ -104,8 +108,10 @@
 
   //PopUp effect
   var input;
+  let amount;
   function openPop(data) {
     input = data;
+    amount = document.querySelector(`input[id='${data}']`);
     document.getElementById(data).classList.add("active");
   }
 
@@ -113,16 +119,39 @@
     document.getElementById(input).classList.remove("active");
   }
 
-  //send a post method to cart
-  function postItem(et) {
 
-    var xhttp = new XMLHttpRequest();
-    xhttp.open("POST", `/cart?et=${et}`, true);
-    xhttp.send();
-    window.location.reload();
+  //ADDING OR SUBTRACTING FUNCTIONS
+
+  function add() {
+    const num = Number(amount.value) + 1;
+    amount.value = num.toString();
   }
 
+  function subtract() {
+    if (amount.value == "1") {
+      return amount.value
+    }
+    else {
+      const num = Number(amount.value) - 1;
+      amount.value = num.toString();
+    }
+  }
 
+  //send a post method to cart
+  function postAny(et) {
+    var xhttp = new XMLHttpRequest();
+    xhttp.open("POST", `/cart?et=${et}&col=equip&quanti=${amount.value}`);
+    xhttp.send();
 
+    setTimeout(function () { window.location.reload() }, 100);
+  }
+  //post default value of 1
+  function postDefault(et) {
+    var xhttp = new XMLHttpRequest();
+    xhttp.open("POST", `/cart?et=${et}&col=equip&quanti=1`);
+    xhttp.send();
+
+    setTimeout(function () { window.location.reload() }, 100);
+  }
 
 </script>

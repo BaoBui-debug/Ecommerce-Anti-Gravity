@@ -1,29 +1,55 @@
+{{!-- POPUP --}}
+<div class="popUp" id="pop-Up">
+    <div class="overlay"></div>
+    <div class="content">
+        {{!-- close button --}}
+        <div class="close-btn" onclick=closePop()>&times;</div>
+        <div>
+            <div class="justify-center">
+                <img class="checkmark" src="/images/clip-arts/green-checkmark.png" alt="checkmark">
+            </div>
+
+            <div class="marginY-10">
+                <span class="justify-center hard">đặt hàng thành công!</span>
+            </div>
+
+            <span class="soft">Giờ đây bạn có thể theo dõi tiến trình đơn hàng của mình trên thanh điều hướng.</span>
+
+
+
+        </div>
+    </div>
+</div>
+{{!-- - --}}
+
+
 <div class="order-container">
-    <form method="POST" class="payment-box">
+    <form method="POST" action="/Order" class="payment-box">
         <span class="sectionName">THÔNG TIN MUA HÀNG</span>
 
         <div class="rowContainer">
             <div class="buyerInformation">
                 <div class="info">
                     <span class="soft">Họ và tên *</span>
-                    <input type="text">
+                    <input type="text" name="Name" id="customer-Name" required>
                 </div>
 
                 <div class="info">
                     <span class="soft">Số điện thoại *</span>
-                    <input type="text">
+                    <input type="text" name="Phone" id="customer-Phone" required>
                 </div>
             </div>
         </div>
 
         <div class="columnContainer">
             <span class="soft">Địa chỉ nhận hàng *</span>
-            <input placeholder="Ghi rõ địa chỉ - Phường(Xã) - Quận(Huyện) - Tỉnh(Thành phố)" type="text">
+            <input placeholder="Ghi rõ địa chỉ - Phường(Xã) - Quận(Huyện) - Tỉnh(Thành phố)" type="text" name="Address"
+                id="customer-Address" required>
         </div>
 
         <div class="columnContainer">
-            <span class="soft">Địa chỉ email *</span>
-            <input type="email">
+            <span class="soft">Địa chỉ email</span>
+            <input type="email" name="Email">
         </div>
 
         <div class="columnContainer">
@@ -32,7 +58,13 @@
                 <span class="checkboxName">GIAO HÀNG ĐẾN ĐỊA CHỈ KHÁC</span>
             </div>
         </div>
-        <input placeholder="Ghi chú đơn hàng (tùy chọn)" type="text">
+        <input placeholder="Ghi chú đơn hàng (tùy chọn)" type="text" name="noteFromCustomer">
+
+        <div class="columnContainer">
+            <button typpe="submit" onclick=openPop()>
+                ĐẶT HÀNG
+            </button>
+        </div>
     </form>
 
 
@@ -45,7 +77,7 @@
             {{#each cart}}
 
             <div class="order-box">
-
+                <span class="Teko-25-400">{{this.quantity}}x</span>
                 <img class="order-image" src={{this.img}} alt={{this.alt}} />
 
                 <div class="order-information">
@@ -62,8 +94,24 @@
             <span>{{format subTotal}}₫</span>
         </div>
 
-        <div class="checkout">
-            <span>THANH TOÁN</span>
-        </div>
     </div>
 </div>
+
+<script>
+
+    function openPop() {
+        const name = document.querySelector("#customer-Name");
+        const phone = document.querySelector("#customer-Phone");
+        const address = document.querySelector("#customer-Address");
+
+        if (name.value == "" || phone.value == "" || address.value == "") {
+            return;
+        } else {
+            document.getElementById("pop-Up").classList.add("active");
+        }
+    }
+
+    function closePop() {
+        window.location.reload();
+    }
+</script>

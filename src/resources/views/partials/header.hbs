@@ -8,6 +8,52 @@
       </div>
     </div>
   </a>
+
+  {{!-- Order progress bar --}}
+  <ul class="flex progress-bar marginY-10">
+
+    <li class="marginY-10 flex-dir-col">
+      <div class="justify-center">
+        <img src="/images/clip-arts/green-checkmark.png" alt="checkmark">
+      </div>
+      <span class="Segoe-UI-15">nhận đơn</span>
+
+    </li>
+
+    <div class="marginY-10 indicator"></div>
+
+    <li class="marginY-10 flex-dir-col">
+      <div class="justify-center">
+        <img class="icon-done" src="/images/clip-arts/process-icon.png" alt="checkmark">
+
+      </div>
+      <span class="Segoe-UI-15">đóng gói</span>
+    </li>
+
+    <div class="marginY-10 indicator"></div>
+
+    <li class="marginY-10 flex-dir-col">
+      <div class="justify-center">
+        <img src="/images/clip-arts/shipping-icon.png" alt="checkmark">
+
+      </div>
+      <span class="Segoe-UI-15">vận chuyển</span>
+    </li>
+
+    <div class="marginY-10 indicator"></div>
+
+    <li class="marginY-10 flex-dir-col">
+      <div class="justify-center">
+
+        <img src="/images/clip-arts/receiving-icon.png" alt="checkmark">
+      </div>
+      <span class="Segoe-UI-15">nhận hàng</span>
+    </li>
+
+  </ul>
+
+  {{!-- --- --}}
+
   <div class="right-wrapper">
     <a href="/cart" class="route-link">
       <div class="right-header">
@@ -36,9 +82,9 @@
             <span id="order-price">{{format this.price}}₫</span>
 
             <div class="order-quanti">
-              <button>-</button>
+              <button onclick=decreaseQuantity({{this.et}})>-</button>
               <span>{{this.quantity}}</span>
-              <button>+</button>
+              <button onclick=increaseQuantity({{this.et}})>+</button>
             </div>
           </div>
 
@@ -52,7 +98,6 @@
           <span>Tổng tiền:</span>
           <span id="total">{{format subTotal}}₫</span>
         </div>
-
 
         <a href="/cart" class="route-link">
           <div class="checkout">
@@ -73,6 +118,24 @@
     var xhttp = new XMLHttpRequest();
     xhttp.open("DELETE", `/cart?et=${et}`);
     xhttp.send();
-    window.location.reload();
+
+    setTimeout(function () { window.location.reload() }, 100);
   }
+  //increase item quantity 
+  function increaseQuantity(et) {
+    var xhttp = new XMLHttpRequest();
+    xhttp.open("PUT", `/cart?et=${et}&update=1`);
+    xhttp.send();
+
+    setTimeout(function () { window.location.reload() }, 100);
+  }
+  //decrease item quantity
+  function decreaseQuantity(et) {
+    var xhttp = new XMLHttpRequest();
+    xhttp.open("PUT", `/cart?et=${et}&update=-1`);
+    xhttp.send();
+
+    setTimeout(function () { window.location.reload() }, 100);
+  }
+
 </script>

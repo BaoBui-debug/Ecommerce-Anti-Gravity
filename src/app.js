@@ -6,8 +6,6 @@ const route = require('./routes');
 const db = require('./config/db');
 
 
-
-
 //Helper functions
 const { currencyFormat } = require('./resources/hbs-helpers/helper');
 
@@ -44,14 +42,19 @@ app.engine(
   }));
 
 
+// Middleware 
+app.use(express.urlencoded( {extended:true} ));
+app.use(express.json());
+
+
+
 
 app.set('view engine', 'hbs');
 app.set('views', path.join(__dirname, 'resources', 'views'));
 
-
-
-//Route init
+// route initialize
 route(app);
+
 
 
 app.listen(port, () => {

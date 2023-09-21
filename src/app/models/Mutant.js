@@ -6,7 +6,8 @@ const Mutant = new Schema({
   price: { type: Number, maxLength: 255 },
   rate: {type: Number, maxLength: 255},
   img: { type: String, maxLength: 255 },
-  alt: { type: String, maxLength: 255 }
+  alt: { type: String, maxLength: 255 },
+  et: {type: String, maxLength: 255}
 });
 
 module.exports = mongoose.model('Mutant', Mutant);
