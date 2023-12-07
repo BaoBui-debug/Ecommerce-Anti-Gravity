@@ -895,6 +895,9 @@ input {
 .border-15 {
   border-radius: 25px; }
 
+.hide {
+  visibility: hidden; }
+
 .brand {
   margin-top: 60px; }
 
